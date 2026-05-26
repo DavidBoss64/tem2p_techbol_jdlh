@@ -13,13 +13,17 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
+    from app.clientes.models import Cliente
+    from app.productos.models import Producto
+    from app.pedidos.models import Pedido
 
+    # Importación de Blueprints
     from app.core.routes import bp_core
     from app.clientes.routes import bp_clientes
     from app.productos.routes import bp_productos
     from app.pedidos.routes import bp_pedidos
 
-
+    # Registro de Blueprints
     app.register_blueprint(bp_core)
     app.register_blueprint(bp_clientes, url_prefix='/clientes')
     app.register_blueprint(bp_productos, url_prefix='/productos')
