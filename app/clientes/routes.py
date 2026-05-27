@@ -35,7 +35,7 @@ def editar(id):
         db.session.commit()
         return redirect(url_for('bp_clientes.index'))
     
-    return render_template('clientes/editar.html')
+    return render_template('clientes/editar.html', cliente=cliente)
 
 
 @bp_clientes.route('/eliminar/<int:id>')
